@@ -1,2 +1,3 @@
-function x = lbpfeatures(path)
+function x = lbpfeatures(patch)
+
 end
