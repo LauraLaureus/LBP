@@ -5,19 +5,17 @@ lbp = zeros(size(im));
 zeroPadding = zeros(size(im,1)+1,size(im,2)+1);
 zeroPadding(2:size(im,1)+1,2:size(im,2)+1) = im; 
 
-table = getTable();
-
 %Error de dimensionMismatch
 for i = 2:size(zeroPadding,1)-1
     for j = 2:size(zeroPadding,2)-1
         slice = zeroPadding(i-1:i+1,j-1:j+1);
-        lbp(i-1,j-1) = uniformBinaryPattern(slice,table);
+        lbp(i-1,j-1) = uniformBinaryPattern(slice);
     end
 end
 
 end
 
-function [label] = uniformBinaryPattern(neighbourhood,table)
+function [label] = uniformBinaryPattern(neighbourhood)
 
 neighbourhoodRoad = zeros(1,9);
 neighbourhoodRoad(1) = neighbourhood(1);
@@ -41,7 +39,7 @@ for n = 1:9
 end
 
 t=0;
-
+table = getTable();
 %transitions
 for i = 2:9
     if(neighbourhoodRoad(i-1) ~= neighbourhoodRoad(i))
@@ -64,7 +62,7 @@ table = zeros(1, 256);
 nextLabel = 1;
     for k = 0:255
         bits = bitand(k, 2.^(7:-1:0))>0;
-        if nnz(diff(bits([1:end, 1]))) <= 2 %nnz elementos distintos de 0
+        if nnz(diff(bits([1:end, 1]))) <= 2 %número de diferencias es 
             table(k+1) = nextLabel;
             nextLabel = nextLabel + 1;
         else
