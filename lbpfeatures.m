@@ -11,7 +11,6 @@ for h = 1:8:size(patch,1)-8
     end
 end
 
-nomHistogram = softmax(histogramImg);
-sum(nomHistogram);
+x = softmax(histogramImg);
 
 end

@@ -12,3 +12,7 @@ end
 
 %guardar la imagen en el sistema de ficheros. 
 end
+
+%%Ejemplos de llamada
+%ioLBP('.\data\train\background\','.\data\train-LBP\pedestrians');
+%ioLBP('.\data\train\pedestrians\','.\data\train-LBP\pedestrians');
